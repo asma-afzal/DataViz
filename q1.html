@@ -82,7 +82,7 @@
     console.log(d3)
     let width = 1400;
     let height = 500;
-    let svg = d3.select("body").select("svg")
+    let svg = d3.select("body").select("svg").attr("viewBox",[0, 0, width, height])
     let margin = { top: 20, right: 30, bottom: 30, left: 40 };
     var parseTime = d3.timeFormat("%B-%d-%Y");
 
@@ -123,8 +123,10 @@
 
         let yAxisSettings = d3.axisLeft(y) //set axis to the left
             .ticks(5) //approx how many ticks, the function will not necesarily give you that number
+            // .tickValues(["500,000", "1.0 million", "1.5 million", "2.0 million", "2.5 million", "3.0 million"])
             .tickSize(-width) //size of tick lines
             .tickPadding(10) //distance from tick labels to tick marks
+            
 
         
         // //adding to the axes to our chart
@@ -153,6 +155,22 @@
             .style("fill", "#ff781f")
 
         console.log(bars)
+
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 1300)
+            .attr("y", 80)
+            .text("3,283,000")
+            .attr("font-weight", 500)
+            .attr("fill", "#DD571C")
+
+        svg.append("text")
+            .attr("class", "label")
+            .attr("x", 1280)
+            .attr("y", 100)
+            .text("cases filed last week")
+            .attr("fill", "#DD571C")
+
 
     })
 
